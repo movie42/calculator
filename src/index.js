@@ -1,6 +1,4 @@
-// <⚠️ DONT DELETE THIS ⚠️>
 import "./styles.css";
-// <⚠️ /DONT DELETE THIS ⚠️>
 
 const display = document.querySelector(".display");
 
@@ -20,7 +18,7 @@ const objectButton = {
   plus: document.getElementById("plus"),
   minus: document.getElementById("minus"),
   multiply: document.getElementById("multiply"),
-  division: document.getElementById("division")
+  division: document.getElementById("division"),
 };
 
 let penddingValue;

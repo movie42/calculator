@@ -15,6 +15,6 @@
     "@babel/core": "7.2.0",
     "parcel-bundler": "^1.6.1"
   },
-  "repo": "https://movie42.github.com/calculator",
+  "repo": "https://movie42.github.io/calculator",
   "keywords": []
 }
