@@ -2,6 +2,8 @@
 
 > ver : 0.1, date : 2020.08.15
 
+link : [https://movie42.github.io/calculator]
+
 I just study Vanilla JavaScript.
 It simple calculator.
 
