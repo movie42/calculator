@@ -1,25 +1,7 @@
 import "./styles.css";
 
 const display = document.querySelector(".display");
-
-const objectButton = {
-  seven: document.getElementById("seven"),
-  eight: document.getElementById("eight"),
-  nine: document.getElementById("nine"),
-  four: document.getElementById("four"),
-  five: document.getElementById("five"),
-  six: document.getElementById("six"),
-  one: document.getElementById("one"),
-  two: document.getElementById("two"),
-  three: document.getElementById("three"),
-  zero: document.getElementById("zero"),
-  equal: document.getElementById("equal"),
-  clear: document.getElementById("clear"),
-  plus: document.getElementById("plus"),
-  minus: document.getElementById("minus"),
-  multiply: document.getElementById("multiply"),
-  division: document.getElementById("division"),
-};
+const numberBtn = document.querySelectorAll(".number_btn");
 
 let penddingValue;
 let newValue;
@@ -105,17 +87,11 @@ function clearBtn(event) {
   newValue = undefined;
 }
 
-function getButton({ ...value }) {
-  seven.addEventListener("click", getValueButton);
-  eight.addEventListener("click", getValueButton);
-  nine.addEventListener("click", getValueButton);
-  four.addEventListener("click", getValueButton);
-  five.addEventListener("click", getValueButton);
-  six.addEventListener("click", getValueButton);
-  one.addEventListener("click", getValueButton);
-  two.addEventListener("click", getValueButton);
-  three.addEventListener("click", getValueButton);
-  zero.addEventListener("click", getValueButton);
+function getButton() {
+  Array.from(numberBtn).forEach((value) =>
+    value.addEventListener("click", getValueButton)
+  );
+
   equal.addEventListener("click", equalValue);
   clear.addEventListener("click", clearBtn);
   plus.addEventListener("click", getOperatorValue);
@@ -125,7 +101,7 @@ function getButton({ ...value }) {
 }
 
 function init() {
-  getButton({ ...objectButton });
+  getButton();
 }
 
 init();

@@ -1,6 +1,6 @@
 # Calculator
 
-> ver : 0.1, date : 2020.08.15
+> ver : 0.1, release:2020.08.15. update : 2020.08.18
 
 link : [https://movie42.github.io/calculator]
 
@@ -19,3 +19,7 @@ Thank you for read this.
 It Can works 'Four rules calculation'.
 
 It Can't other calculation and memorization value.
+
+## update 2020.08.18
+
+Change button object with Array.from()
