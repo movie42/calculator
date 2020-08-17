@@ -194,31 +194,8 @@ module.hot.accept(reloadCSS);
 
 require("./styles.css");
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var display = document.querySelector(".display");
-var objectButton = {
-  seven: document.getElementById("seven"),
-  eight: document.getElementById("eight"),
-  nine: document.getElementById("nine"),
-  four: document.getElementById("four"),
-  five: document.getElementById("five"),
-  six: document.getElementById("six"),
-  one: document.getElementById("one"),
-  two: document.getElementById("two"),
-  three: document.getElementById("three"),
-  zero: document.getElementById("zero"),
-  equal: document.getElementById("equal"),
-  clear: document.getElementById("clear"),
-  plus: document.getElementById("plus"),
-  minus: document.getElementById("minus"),
-  multiply: document.getElementById("multiply"),
-  division: document.getElementById("division")
-};
+var numberBtn = document.querySelectorAll(".number_btn");
 var penddingValue;
 var newValue;
 var operator;
@@ -307,18 +284,10 @@ function clearBtn(event) {
   newValue = undefined;
 }
 
-function getButton(_ref) {
-  var value = Object.assign({}, _ref);
-  seven.addEventListener("click", getValueButton);
-  eight.addEventListener("click", getValueButton);
-  nine.addEventListener("click", getValueButton);
-  four.addEventListener("click", getValueButton);
-  five.addEventListener("click", getValueButton);
-  six.addEventListener("click", getValueButton);
-  one.addEventListener("click", getValueButton);
-  two.addEventListener("click", getValueButton);
-  three.addEventListener("click", getValueButton);
-  zero.addEventListener("click", getValueButton);
+function getButton() {
+  Array.from(numberBtn).forEach(function (value) {
+    return value.addEventListener("click", getValueButton);
+  });
   equal.addEventListener("click", equalValue);
   clear.addEventListener("click", clearBtn);
   plus.addEventListener("click", getOperatorValue);
@@ -328,7 +297,7 @@ function getButton(_ref) {
 }
 
 function init() {
-  getButton(_objectSpread({}, objectButton));
+  getButton();
 }
 
 init();
@@ -360,7 +329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60802" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61292" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
