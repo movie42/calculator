@@ -194,113 +194,155 @@ module.hot.accept(reloadCSS);
 
 require("./styles.css");
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var display = document.querySelector(".display");
-var numberBtn = document.querySelectorAll(".number_btn");
-var penddingValue;
-var newValue;
-var operator;
+var numberBtn = document.querySelectorAll("button");
 
-function getValueButton(event) {
-  var value = event.target.lastChild.nodeValue;
+function _isObject(obj) {
+  return _typeof(obj) === "object" && !!obj;
+}
 
-  if (display.innerText === "0") {
-    display.innerText = value;
-  } else if (display.innerText === String(penddingValue)) {
-    display.innerText = value;
-  } else {
-    display.innerText += value;
+function _keys(obj) {
+  return _isObject(obj) ? Object.keys(obj) : [];
+}
+
+function _each(list, iter) {
+  var keys = _keys(list);
+
+  for (var i = 0, len = keys.length; i < len; i++) {
+    iter(list[keys[i]]);
   }
+
+  return list;
 }
 
-function setValue() {
-  penddingValue = display.innerText;
-}
+function _map(list, mapper) {
+  var new_list = [];
 
-function getOperatorValue(value) {
-  var _value$target, _value$target$lastChi;
-
-  var operatorValue = value === null || value === void 0 ? void 0 : (_value$target = value.target) === null || _value$target === void 0 ? void 0 : (_value$target$lastChi = _value$target.lastChild) === null || _value$target$lastChi === void 0 ? void 0 : _value$target$lastChi.nodeValue;
-  setValue();
-
-  if (newValue === undefined) {
-    newValue = +penddingValue;
-    display.innerText = newValue;
-    setValue();
-    operator = operatorValue;
-  } else if (operatorValue !== operator) {
-    switchBtn(operator);
-    operator = operatorValue;
-  } else if (operatorValue === "+" || value === "+") {
-    newValue += +penddingValue;
-    display.innerText = newValue;
-    setValue();
-    operator = operatorValue;
-  } else if (operatorValue === "*" || value === "*") {
-    newValue *= +penddingValue;
-    display.innerText = newValue;
-    setValue();
-    operator = operatorValue;
-  } else if (operatorValue === "-" || value === "-") {
-    newValue -= +penddingValue;
-    display.innerText = newValue;
-    setValue();
-    operator = operatorValue;
-  } else if (operatorValue === "/" || value === "/") {
-    newValue /= +penddingValue;
-    display.innerText = newValue;
-    setValue();
-    operator = operatorValue;
-  }
-}
-
-function switchBtn(value) {
-  if (value === "+") {
-    newValue += +penddingValue;
-    display.innerText = newValue;
-    setValue();
-  } else if (value === "*") {
-    newValue *= +penddingValue;
-    display.innerText = newValue;
-    setValue();
-  } else if (value === "-") {
-    newValue -= +penddingValue;
-    display.innerText = newValue;
-    setValue();
-  } else if (value === "/") {
-    newValue /= +penddingValue;
-    display.innerText = newValue;
-    setValue();
-  }
-}
-
-function equalValue() {
-  getOperatorValue(operator);
-  newValue = undefined;
-}
-
-function clearBtn(event) {
-  display.innerText = "0";
-  penddingValue = undefined;
-  newValue = undefined;
-}
-
-function getButton() {
-  Array.from(numberBtn).forEach(function (value) {
-    return value.addEventListener("click", getValueButton);
+  _each(list, function (val) {
+    new_list.push(mapper(val));
   });
-  equal.addEventListener("click", equalValue);
-  clear.addEventListener("click", clearBtn);
-  plus.addEventListener("click", getOperatorValue);
-  minus.addEventListener("click", getOperatorValue);
-  multiply.addEventListener("click", getOperatorValue);
-  division.addEventListener("click", getOperatorValue);
+
+  return new_list;
 }
 
-function init() {
-  getButton();
+function _curry(fn) {
+  return function (a, b) {
+    return arguments.length === 2 ? fn(a, b) : function (b) {
+      return fn(a, b);
+    };
+  };
 }
 
-init();
+var _get = _curry(function (obj, key) {
+  return obj == null ? undefined : obj[key];
+});
+
+var text = _map(numberBtn, function (node) {
+  return node.textContent;
+});
+
+function handleNode(node) {
+  return node;
+}
+
+_each(numberBtn, function (val) {
+  return val.addEventListener("click", function (e) {
+    display.innerText += handleNode(e.target);
+  });
+}); // let penddingValue;
+// let newValue;
+// let operator;
+// function getValueButton(event) {
+//   const value = event.target.lastChild.nodeValue;
+//   if (display.innerText === "0") {
+//     display.innerText = value;
+//   } else if (display.innerText === String(penddingValue)) {
+//     display.innerText = value;
+//   } else {
+//     display.innerText += value;
+//   }
+// }
+// function setValue() {
+//   penddingValue = display.innerText;
+// }
+// function getOperatorValue(value) {
+//   let operatorValue = value?.target?.lastChild?.nodeValue;
+//   setValue();
+//   if (newValue === undefined) {
+//     newValue = +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//     operator = operatorValue;
+//   } else if (operatorValue !== operator) {
+//     switchBtn(operator);
+//     operator = operatorValue;
+//   } else if (operatorValue === "+" || value === "+") {
+//     newValue += +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//     operator = operatorValue;
+//   } else if (operatorValue === "*" || value === "*") {
+//     newValue *= +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//     operator = operatorValue;
+//   } else if (operatorValue === "-" || value === "-") {
+//     newValue -= +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//     operator = operatorValue;
+//   } else if (operatorValue === "/" || value === "/") {
+//     newValue /= +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//     operator = operatorValue;
+//   }
+// }
+// function switchBtn(value) {
+//   if (value === "+") {
+//     newValue += +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//   } else if (value === "*") {
+//     newValue *= +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//   } else if (value === "-") {
+//     newValue -= +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//   } else if (value === "/") {
+//     newValue /= +penddingValue;
+//     display.innerText = newValue;
+//     setValue();
+//   }
+// }
+// function equalValue() {
+//   getOperatorValue(operator);
+//   newValue = undefined;
+// }
+// function clearBtn(event) {
+//   display.innerText = "0";
+//   penddingValue = undefined;
+//   newValue = undefined;
+// }
+// function getButton() {
+//   Array.from(numberBtn).forEach((value) =>
+//     value.addEventListener("click", getValueButton)
+//   );
+//   equal.addEventListener("click", equalValue);
+//   clear.addEventListener("click", clearBtn);
+//   plus.addEventListener("click", getOperatorValue);
+//   minus.addEventListener("click", getOperatorValue);
+//   multiply.addEventListener("click", getOperatorValue);
+//   division.addEventListener("click", getOperatorValue);
+// }
+// function init() {
+//   getButton();
+// }
+// init();
 },{"./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -329,7 +371,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61292" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50052" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

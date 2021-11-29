@@ -1,6 +1,12 @@
 # Calculator
 
-> ver : 0.1, release:2020.08.15. update : 2020.08.18
+> ver : 1.0, release:2020.08.15. update : 2020.08.18
+
+## update
+
+> update : 2021.11.29
+
+함수형 자바스크립트 적용해보기
 
 link : [https://movie42.github.io/calculator]
 
